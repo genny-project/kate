@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: internmatch-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.org/ssl-services: "internmatch-svc"
+  namespace: monitoring
+spec:
+  tls:
+    - hosts:
+      - dashboard-interns.outcome-hub.com
+      secretName: tls-certificate
+  rules:
+  - host: dashboard-interns.outcome-hub.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: grafana
+          servicePort: 3000
+  - host: pro-dashboard-interns.outcome-hub.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: prometheus
+          servicePort: 9090
