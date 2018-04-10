@@ -7,3 +7,5 @@ wget -oQ- https://genny.outcome-hub.com/install.sh | sh
 
 Once this has downloaded and installed , then we need to run the kubenetes service
 
+
+Terradata.io  should be installed. This provides command line capability to deploy AWS instances.
